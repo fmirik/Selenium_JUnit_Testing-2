@@ -1,4 +1,4 @@
-package com.example.selenium_junit_testing;
+package example.selenium_junit_testing;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
