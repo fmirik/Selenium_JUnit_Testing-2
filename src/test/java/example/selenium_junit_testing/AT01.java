@@ -26,7 +26,6 @@ public class AT01 {
     @BeforeEach
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
-        // Fix the issue https://github.com/SeleniumHQ/selenium/issues/11750
         options.addArguments("--remote-allow-origins=*").addExtensions(new File("./extension.crx"));//uBlock Origin Extension
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
@@ -41,13 +40,19 @@ public class AT01 {
     @Test
     public void test01() throws InterruptedException {
         Thread.sleep(3000);//Extension load
+
+        //Enter the URL “http://practice.automationtesting.in/”
         driver.get("http://practice.automationtesting.in/");
+
+        //Click on Shop Menu
         WebElement shopMenu = driver.findElement(By.xpath("//a[.='Shop']"));
         shopMenu.click();
 
+        //Now click on Home menu button
         WebElement homeMenu = driver.findElement(By.xpath("//a[.='Home']"));
         homeMenu.click();
 
+        //Test whether the Home page has Three Sliders only
         int sliderCount = driver.findElements(By.xpath("//div[@id='n2-ss-6']/div")).size();
         Assertions.assertEquals(3,sliderCount);
 
