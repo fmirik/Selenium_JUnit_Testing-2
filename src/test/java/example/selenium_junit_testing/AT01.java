@@ -1,9 +1,14 @@
+package example.selenium_junit_testing;
+
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
+import java.io.File;
 import java.time.Duration;
 
 public class AT01 {
@@ -17,16 +22,16 @@ public class AT01 {
     //6) The Home page must contains only three sliders
 
     private WebDriver driver;
-    private MainPage mainPage;
+
 
     @BeforeEach
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        // Fix the issue https://github.com/SeleniumHQ/selenium/issues/11750
+        options.addArguments("--remote-allow-origins=*").addExtensions(new File("./extension.crx"));//uBlock Origin Extension
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://www.jetbrains.com/");
     }
 
     @AfterEach
@@ -35,11 +40,11 @@ public class AT01 {
     }
 
     @Test
-    public void test01() {
+    public void test01() throws InterruptedException {
+        Thread.sleep(3000);//Extension load
         driver.get("http://practice.automationtesting.in/");
         driver.findElement(By.xpath("//a[.='Shop']")).click();
         driver.findElement(By.xpath("//a[.='Home']")).click();
-
 
     }
 }

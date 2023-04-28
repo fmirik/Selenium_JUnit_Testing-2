@@ -6,6 +6,6 @@
 - jUnit 5.9.1
 - Webdriver Manager 5.3.1
 
-(uBlock Extension v1.48.80)
+(uBlock Extension v1.49.2)
 
 The test scenarios at https://practice.automationtesting.in/test-cases/ include test projects with Java, Selenium and jUnit.
