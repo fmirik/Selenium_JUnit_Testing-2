@@ -3,6 +3,7 @@ package example.selenium_junit_testing;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -43,8 +44,14 @@ public class AT01 {
     public void test01() throws InterruptedException {
         Thread.sleep(3000);//Extension load
         driver.get("http://practice.automationtesting.in/");
-        driver.findElement(By.xpath("//a[.='Shop']")).click();
-        driver.findElement(By.xpath("//a[.='Home']")).click();
+        WebElement shopMenu = driver.findElement(By.xpath("//a[.='Shop']"));
+        shopMenu.click();
+
+        WebElement homeMenu = driver.findElement(By.xpath("//a[.='Home']"));
+        homeMenu.click();
+
+        int sliderCount = driver.findElements(By.xpath("//div[@id='n2-ss-6']/div")).size();
+        Assertions.assertEquals(3,sliderCount);
 
     }
 }
