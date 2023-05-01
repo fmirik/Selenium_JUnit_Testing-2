@@ -23,7 +23,6 @@ public class AT02 {
 
     private WebDriver driver;
 
-
     @BeforeEach
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
@@ -41,6 +40,8 @@ public class AT02 {
     @Test
     void test02() throws InterruptedException {
         Thread.sleep(3000);//Extension load
+
+        //Enter the URL “http://practice.automationtesting.in/”
         driver.get("http://practice.automationtesting.in/");
 
         //Click on Shop Menu
