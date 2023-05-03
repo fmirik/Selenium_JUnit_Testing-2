@@ -1,0 +1,2 @@
+public class AT04 {
+}

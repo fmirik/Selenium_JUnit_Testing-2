@@ -62,6 +62,7 @@ public class AT03 {
 
         //Now click the image in the Arrivals
         //Test whether it is navigating to next page where the user can add that book into his basket.
+        //Image should be clickable and shoul navigate to next page where user can add that book to his basket
         List<WebElement> arrivalsList = driver.findElements(By.xpath("//ul[@class='products']"));
 
         for (WebElement w : arrivalsList) {
